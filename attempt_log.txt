@@ -1,0 +1,2 @@
+Updated style.css with body.light-mode overrides for courses section.
+
