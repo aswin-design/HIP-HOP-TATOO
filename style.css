@@ -2350,6 +2350,61 @@ body.light-mode .chat-btn{
     overflow:hidden;
 }
 
+/* LIGHT MODE (Providing + Footer) */
+
+body.light-mode .providing-section{
+    background:#ece7df;
+}
+
+body.light-mode .providing-section::before{
+    background:radial-gradient(circle,
+    rgba(214,179,141,0.18),
+    transparent 70%);
+}
+
+body.light-mode .provide-card{
+    background:rgba(255,255,255,0.88);
+    border:1px solid rgba(216,195,165,0.35);
+}
+
+body.light-mode .provide-card h3{
+    color:#5a4a35;
+}
+
+body.light-mode .provide-card p{
+    color:#444;
+}
+
+body.light-mode .footer{
+    background:#f3ede5;
+    color:#111;
+}
+
+body.light-mode .footer-top{
+    border-bottom:1px solid rgba(216,179,141,0.35);
+}
+
+body.light-mode .footer-top h2{
+    color:#111;
+}
+
+body.light-mode .footer-top p{
+    color:#444;
+}
+
+body.light-mode .footer-box h3{
+    color:#5a4a35;
+}
+
+body.light-mode .footer-box p{
+    color:#444;
+}
+
+body.light-mode .landmark{
+    color:#666;
+}
+
+
 /* BACKGROUND GLOW */
 
 .providing-section::before{
