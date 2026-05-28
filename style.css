@@ -903,7 +903,9 @@ body.light-mode .stat-card h3{
 
     max-width:900px;
 
-    margin:100px auto 0;
+    /* center the card horizontally and keep spacing consistent */
+    display:block;
+margin:100px auto 0;
 
     padding:75px 45px;
 
@@ -1608,6 +1610,14 @@ body.light-mode .masterclass-content p{
     color:#444;
 }
 
+/* Scroll animation tuning */
+@media (prefers-reduced-motion: reduce){
+  .courses-section::before,
+  .course-overlay{
+    transition:none !important;
+  }
+}
+
 /* RESPONSIVE */
 
 @media(max-width:991px){
@@ -1757,6 +1767,9 @@ body.light-mode .chat-btn{
     top:-250px;
     right:-150px;
     filter:blur(100px);
+    transform:translate3d(0, calc(var(--coursesScroll) * -40px), 0);
+    transition:transform 0.08s linear;
+    will-change:transform;
 }
 
 /* HEADING */
@@ -1834,6 +1847,9 @@ body.light-mode .chat-btn{
     transparent 70%);
     border-radius:50%;
     filter:blur(30px);
+    transform:translate3d(0, calc(var(--coursesScroll) * 30px), 0);
+    transition:transform 0.08s linear;
+    will-change:transform;
 }
 
 /* TAG */
@@ -2063,6 +2079,8 @@ body.light-mode .chat-btn{
     justify-content:center;
     position:relative;
     overflow:hidden;
+    --coursesScroll:0; /* set by JS */
+
 }
 
 /* BACKGROUND GLOW */

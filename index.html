@@ -426,13 +426,11 @@
 </section>
 <!-- COURSES SECTION -->
 <section class="courses-section" id="courses">
-  <h2 class="section-title">Courses</h2>
+  <h2 class="section-title reveal" data-reveal="courses-title">Courses</h2>
 
-
-  <div class="courses-container">
-
+  <div class="courses-container" data-courses-scroll>
     <!-- CARD -->
-    <div class="course-card">
+    <div class="course-card reveal" data-reveal="courses-card">
       <div class="course-overlay"></div>
 
       <span class="course-tag">Professional</span>
@@ -641,28 +639,34 @@ window.addEventListener("load", () => {
 
 });
 
-/* REVEAL */
+/* REVEAL (uses IntersectionObserver for better performance) */
 
-window.addEventListener("scroll", reveal);
-
-function reveal(){
-
-  let reveals = document.querySelectorAll(".reveal");
-
-  for(let i = 0; i < reveals.length; i++){
-
-    let windowHeight = window.innerHeight;
-    let elementTop = reveals[i].getBoundingClientRect().top;
-    let elementVisible = 120;
-
-    if(elementTop < windowHeight - elementVisible){
-
-      reveals[i].classList.add("active");
-
+const revealEls = document.querySelectorAll(".reveal");
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("active");
+      io.unobserve(entry.target);
     }
+  });
+},{ root: null, threshold: 0.15 });
 
-  }
+revealEls.forEach(el => io.observe(el));
 
+/* COURSES SCROLL EFFECT */
+
+const coursesSection = document.querySelector("#courses");
+if(coursesSection){
+  const update = () => {
+    const rect = coursesSection.getBoundingClientRect();
+    const vh = window.innerHeight || 1;
+    // progress from 0..1 while section moves through viewport
+    const progress = Math.min(1, Math.max(0, (vh - rect.top) / (vh + rect.height)));
+    coursesSection.style.setProperty("--coursesScroll", progress.toFixed(4));
+  };
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
 }
 
 /* THEME */
