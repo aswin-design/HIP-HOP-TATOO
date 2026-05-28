@@ -212,6 +212,16 @@ body.light-mode .expertise-review p{
   transition:0.4s;
 }
 
+/* NAVBAR HOVER (beige text) */
+.nav-links a:hover{
+  color:var(--beige);
+}
+
+body.light-mode .nav-links a:hover{
+  color:var(--beige);
+}
+
+
 .nav-links a:hover::after{
   width:100%;
 }
@@ -1301,6 +1311,20 @@ body.light-mode .artist-image img{
 
 }
 
+/* MOVE BOXES (same feel as gallery) */
+.provide-card{
+  animation:floatGallery 5s ease-in-out infinite;
+}
+
+.course-card{
+  animation:floatGallery 5s ease-in-out infinite;
+}
+
+.masterclass-box{
+  animation:floatGallery 5s ease-in-out infinite;
+}
+
+
 /* LIGHT MODE */
 
 body.light-mode .gallery{
@@ -1659,12 +1683,15 @@ body.light-mode .courses-section::before{
 }
 
 body.light-mode .courses-section .section-title{
-    color:#5a4a35;
+    color:#111;
 }
 
 body.light-mode .courses-section .section-title::after{
-    background:#5a4a35;
+    background:#111;
 }
+
+
+
 
 body.light-mode .course-card{
     background:rgba(255,255,255,0.85);
@@ -1736,6 +1763,7 @@ body.light-mode .chat-btn{
 
 .courses-section .section-title{
     color:#d8c3a5;
+    font-family:'Marcellus', serif;
     font-size:60px;
     font-weight:700;
     margin-bottom:70px;
@@ -1744,6 +1772,7 @@ body.light-mode .chat-btn{
     text-align:center;
     position:relative;
 }
+
 
 .courses-section .section-title::after{
     content:'';
@@ -2356,6 +2385,11 @@ body.light-mode .providing-section{
     background:#ece7df;
 }
 
+body.light-mode .providing-heading h2{
+    color:#111;
+}
+
+
 body.light-mode .providing-section::before{
     background:radial-gradient(circle,
     rgba(214,179,141,0.18),
@@ -2438,12 +2472,14 @@ body.light-mode .landmark{
 
 .providing-heading h2{
     color:#fff;
+    font-family:'Marcellus', serif;
     font-size:58px;
     margin-top:18px;
     font-weight:700;
     text-transform:uppercase;
     letter-spacing:3px;
 }
+
 
 /* CONTAINER */
 
@@ -2624,10 +2660,15 @@ body.light-mode .landmark{
     transition:0.4s ease;
 }
 
+.footer-btn{
+    animation:floatGallery 5s ease-in-out infinite;
+}
+
 .footer-btn:hover{
     transform:translateY(-5px);
     box-shadow:0 10px 25px rgba(37,211,102,0.3);
 }
+
 
 /* CONTAINER */
 
