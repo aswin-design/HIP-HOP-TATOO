@@ -187,6 +187,40 @@ body.light-mode .expertise-review p{
   letter-spacing:3px;
 }
 
+/* Mobile toggle button (hidden on desktop) */
+.nav-toggle{
+  display:none;
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(0,0,0,0.25);
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:6px;
+  z-index:1001;
+}
+
+.nav-toggle span{
+  display:block;
+  width:20px;
+  height:2px;
+  background:var(--white);
+  opacity:0.9;
+  transition:0.25s;
+}
+
+body.light-mode .nav-toggle{
+  background:rgba(255,255,255,0.5);
+  border-color:rgba(0,0,0,0.1);
+}
+
+body.light-mode .nav-toggle span{
+  background:#111;
+}
+
 .nav-links{
   display:flex;
   list-style:none;
@@ -1345,6 +1379,49 @@ body.light-mode .gallery{
 
 @media(max-width:768px){
 
+  /* Mobile navbar */
+  .navbar{ padding:18px 20px; }
+  .nav-toggle{ display:flex; }
+  .nav-links{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    padding:14px 20px 18px;
+    flex-direction:column;
+    gap:14px;
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    transform:translateY(-8px);
+    opacity:0;
+    pointer-events:none;
+    transition:0.25s ease;
+  }
+
+  body.light-mode .nav-links{
+    background:rgba(255,255,255,0.65);
+  }
+
+  .nav-links a{ font-size:14px; }
+
+.navbar.nav-open .nav-links{
+    opacity:1;
+    pointer-events:auto;
+    transform:translateY(0);
+  }
+
+  /* spacing */
+  .hero{ padding-top:72px; }
+  .about{ grid-template-columns:1fr; padding:110px 20px; gap:35px; }
+  .experience-stats{ padding:110px 20px; }
+  .gallery{ padding:110px 20px; }
+
+  .masterclass-section{ padding:110px 20px; }
+  .courses-section{ padding:110px 16px; }
+  .providing-section{ padding:110px 20px; }
+  .footer-container{ padding:55px 20px; }
+
   .stack-gallery{
     grid-template-columns:repeat(2,1fr);
     gap:20px;
@@ -1355,6 +1432,7 @@ body.light-mode .gallery{
   }
 
 }
+
 
 @media(max-width:550px){
 

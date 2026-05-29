@@ -33,16 +33,20 @@
     SHADOWINK
   </div>
 
+  <button class="nav-toggle" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
   <nav>
 
-    <ul class="nav-links">
-
+    <ul class="nav-links" id="primary-nav">
       <li><a href="#home">HOME</a></li>
       <li><a href="#about">ABOUT</a></li>
       <li><a href="#experience">EXPERIENCE</a></li>
       <li><a href="#gallery">GALLERY</a></li>
       <li><a href="#contact">CONTACT</a></li>
-
     </ul>
 
   </nav>
@@ -677,6 +681,33 @@ toggle.onclick = () => {
 
   document.body.classList.toggle("light-mode");
 
+}
+
+
+/* MOBILE NAVIGATION */
+
+const navToggle = document.querySelector('.nav-toggle');
+const primaryNav = document.getElementById('primary-nav');
+
+if (navToggle && primaryNav) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = primaryNav.classList.toggle('nav-open');
+    // also apply to navbar for CSS selector
+    if (isOpen) {
+      navToggle.closest('.navbar').classList.add('nav-open');
+    } else {
+      navToggle.closest('.navbar').classList.remove('nav-open');
+    }
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close menu after clicking a link
+  primaryNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      primaryNav.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
 }
 
 </script>
