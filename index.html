@@ -645,7 +645,41 @@ window.addEventListener("load", () => {
 
 /* REVEAL (uses IntersectionObserver for better performance) */
 
+const scrollRevealEls = document.querySelectorAll(`
+  section,
+  .about-image,
+  .about-content,
+  .about-box,
+  .stat-card,
+  .expertise-review,
+  .stack-card,
+  .masterclass-image,
+  .masterclass-content,
+  .course-card,
+  .provide-card,
+  .footer-top,
+  .footer-box
+`);
+
+scrollRevealEls.forEach((el, index) => {
+  el.classList.add("scroll-reveal");
+  el.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 90}ms`);
+
+  if (el.matches(".about-image, .masterclass-image")) {
+    el.classList.add("from-left");
+  }
+
+  if (el.matches(".about-content, .masterclass-content")) {
+    el.classList.add("from-right");
+  }
+
+  if (el.matches(".stat-card, .stack-card, .about-box, .provide-card")) {
+    el.classList.add("zoom-in");
+  }
+});
+
 const revealEls = document.querySelectorAll(".reveal");
+const animatedEls = document.querySelectorAll(".reveal, .scroll-reveal");
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if(entry.isIntersecting){
@@ -655,7 +689,7 @@ const io = new IntersectionObserver((entries) => {
   });
 },{ root: null, threshold: 0.15 });
 
-revealEls.forEach(el => io.observe(el));
+animatedEls.forEach(el => io.observe(el));
 
 /* COURSES SCROLL EFFECT */
 

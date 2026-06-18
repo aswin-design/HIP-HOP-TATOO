@@ -11,6 +11,7 @@
 
 html{
   scroll-behavior:smooth;
+  overflow-x:hidden;
 }
 
 :root{
@@ -505,6 +506,46 @@ body.light-mode .nav-links a:hover{
 .reveal.active{
   opacity:1;
   transform:translateY(0);
+}
+
+.scroll-reveal{
+  opacity:0;
+  transform:translateY(70px) scale(0.98);
+  filter:blur(10px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease,
+    filter 0.9s ease;
+  transition-delay:var(--reveal-delay, 0ms);
+  will-change:opacity, transform, filter;
+}
+
+.scroll-reveal.from-left{
+  transform:translateX(-70px) scale(0.98);
+}
+
+.scroll-reveal.from-right{
+  transform:translateX(70px) scale(0.98);
+}
+
+.scroll-reveal.zoom-in{
+  transform:translateY(36px) scale(0.92);
+}
+
+.scroll-reveal.active{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+  filter:blur(0);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal,
+  .scroll-reveal{
+    opacity:1 !important;
+    transform:none !important;
+    filter:none !important;
+    transition:none !important;
+  }
 }
 
 /* =========================================================
@@ -3330,6 +3371,11 @@ body.light-mode .hero-overlay{
 }
 
 @media(max-width:768px){
+  .scroll-reveal.from-left,
+  .scroll-reveal.from-right{
+    transform:translateY(58px) scale(0.98);
+  }
+
   body::after{
     background-size:54px 54px;
   }
