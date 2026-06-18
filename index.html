@@ -92,7 +92,7 @@
 
   <div class="about-image">
 
-    <img src="IMAGES/about us tatoo.avif" alt="">
+    <img src="images/about us.png" alt="">
 
   </div>
 
@@ -705,6 +705,7 @@ if (navToggle && primaryNav) {
   primaryNav.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       primaryNav.classList.remove('nav-open');
+      navToggle.closest('.navbar').classList.remove('nav-open');
       navToggle.setAttribute('aria-expanded', 'false');
     });
   });
